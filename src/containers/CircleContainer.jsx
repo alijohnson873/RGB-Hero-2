@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import Circle from "../components/Circle";
 
 class CircleContainer extends Component {
-  state = { multiArr: [] };
+  state = { allRgbValues: [] };
   rgbArr = [];
   rgbArrCollection = [];
   randRGBGen = () => Math.ceil(Math.random() * 255);
@@ -20,10 +20,19 @@ class CircleContainer extends Component {
 
   rgbMultiArr = this.fillRgbMultiArr();
 
+  componentDidMount() {
+    this.setState({
+      allRgbValues: this.fillRgbMultiArr()
+    });
+  }
+
   render() {
+    console.log(this.state.allRgbValues[0]);
     return (
       <section>
-        <Circle rgbValue={this.rgbMultiArr[0]} />
+        {this.rgbMultiArr.map((rgbSingle, index) => (
+          <Circle rgbValue={rgbSingle} key={index} />
+        ))}
       </section>
     );
   }
