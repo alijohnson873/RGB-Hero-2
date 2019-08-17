@@ -3,44 +3,51 @@ import styles from "./CircleContainer.module.scss";
 import Circle from "../components/Circle";
 
 class CircleContainer extends Component {
-  //need to update state with fillMultiArr equation
-  state = { allRgbValues: [] };
-  rgbArr = [];
-  rgbArrCollection = [];
-  randRGBGen = () => Math.ceil(Math.random() * 255);
-  fillRgbArr = () => {
-    return [this.randRGBGen(), this.randRGBGen(), this.randRGBGen()];
+  state = { allRgbValues: [], indexOfShownRgb: 1, testState: "" };
+
+  makeSingleRgbArr = () => {
+    let randRGBGen = () => Math.ceil(Math.random() * 255);
+    return [randRGBGen(), randRGBGen(), randRGBGen()];
   };
-  fillRgbMultiArr = () => {
-    let newArr = [];
-    for (let i = 0; i < 5; i++) {
-      newArr.push(this.fillRgbArr());
+  makeMultiRgbArr = numberOfArr => {
+    let multiRgbArr = [];
+    for (let i = 0; i < numberOfArr; i++) {
+      multiRgbArr.push(this.makeSingleRgbArr());
     }
-    return newArr;
+    return multiRgbArr;
   };
-  rgbMultiArr = this.fillRgbMultiArr();
-
   //generate random number for rgbIndex between 0 and rgb index length ;
-  randIndexNumber = () => Math.floor(Math.random() * this.rgbMultiArr.length);
+  genRandIndexNumber = arr => Math.floor(Math.random() * arr.length);
 
-  //makes rgb string from array
-  makeRgbString = arr => `rgb(${arr[0]}, ${arr[1]}, ${arr[2]})`;
+  //makes rgb string from array //remember to add rgba value too
+  makeRgbString = arr => `rgb(${arr[0]}, ${arr[1]}, ${arr[2]}, 0.5)`;
 
+  componentWillMount() {
+    console.log("will mount");
+    this.setState({
+      allRgbValues: this.makeMultiRgbArr(5)
+    });
+  }
+  //why do I need both above and below?
   componentDidMount() {
     this.setState({
-      allRgbValues: this.fillRgbMultiArr()
+      indexOfShownRgb: this.genRandIndexNumber(this.state.allRgbValues)
     });
   }
 
+  alertOnWin = () => {};
+
   render() {
-    console.log(this.randIndexNumber());
+    console.log(this.state.allRgbValues);
+    console.log(this.state.indexOfShownRgb);
+
     return (
       <React.Fragment>
         <header>
           <h1>RGB HERO 2</h1>
         </header>
         <section>
-          {this.rgbMultiArr.map((rgbSingle, index) => (
+          {this.state.allRgbValues.map((rgbSingle, index) => (
             <Circle
               rgbValue={rgbSingle}
               key={index}
@@ -48,7 +55,12 @@ class CircleContainer extends Component {
             />
           ))}
         </section>
-        <h3>{this.makeRgbString(this.rgbMultiArr[this.randIndexNumber()])}</h3>
+        <h2>
+          {this.makeRgbString(
+            this.state.allRgbValues[this.state.indexOfShownRgb]
+          )}
+        </h2>
+        <p>Index value: {this.state.indexOfShownRgb}</p>
       </React.Fragment>
     );
   }

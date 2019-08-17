@@ -16,7 +16,70 @@
 
 //What do I want////////////////
 
-//props
+//import React, { Component } from "react";
+import styles from "./CircleContainer.module.scss";
+import Circle from "../components/Circle";
+
+class CircleContainer extends Component {
+  state = { allRgbValues: [], indexOfShownRgb: "" };
+
+  makeSingleRgbArr = () => {
+    let randRGBGen = () => Math.ceil(Math.random() * 255);
+    return [randRGBGen(), randRGBGen(), randRGBGen()];
+  };
+  makeMultiRgbArr = numberOfArr => {
+    let multiRgbArr = [];
+    for (let i = 0; i < numberOfArr; i++) {
+      multiRgbArr.push(this.makeSingleRgbArr());
+    }
+    return multiRgbArr;
+  };
+  //generate random number for rgbIndex between 0 and rgb index length ;
+  genRandIndexNumber = () =>
+    Math.floor(Math.random() * this.rgbMultiArrTemp.length);
+
+  //fill array
+  rgbMultiArrTemp = this.makeMultiRgbArr(10);
+
+  //makes rgb string from array //remember to add rgba value too
+  makeRgbString = arr => `rgb(${arr[0]}, ${arr[1]}, ${arr[2]})`;
+
+  // componentWillMount() {
+  //   this.setState({
+  //     allRgbValues: this.makeMultiRgbArr()
+  //   });
+  //   this.setState({
+  //     indexOfShownRgb: this.genRandIndexNumber()
+  //   });
+  // }
+
+  render() {
+    console.log(this.state.allRgbValues);
+    console.log(this.genRandIndexNumber());
+    return (
+      <React.Fragment>
+        <header>
+          <h1>RGB HERO 2</h1>
+        </header>
+        <section onClick={console.log("barry")}>
+          {this.rgbMultiArrTemp.map((rgbSingle, index) => (
+            <Circle
+              rgbValue={rgbSingle}
+              key={index}
+              makeRgbString={this.makeRgbString}
+            />
+          ))}
+        </section>
+        <h2>
+          {this.makeRgbString(this.rgbMultiArrTemp[this.genRandIndexNumber()])}
+        </h2>
+      </React.Fragment>
+    );
+  }
+}
+
+export default CircleContainer;
+
 
 //Inhale
 //In Hold
