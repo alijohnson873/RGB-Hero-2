@@ -1,14 +1,20 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import styles from "./Circle.module.scss";
 
 class Circle extends Component {
   state = {};
+
+  makeRgbString = () =>
+    `rgb(${this.props.rgbValue[0]}, ${this.props.rgbValue[1]}, ${
+      this.props.rgbValue[2]
+    })`;
+
   render() {
     return (
-      <section className={styles.circle}>
-        <h1>I am a circle</h1>
-      </section>
+      <section
+        className={styles.circle}
+        style={{ backgroundColor: this.makeRgbString() }}
+      />
     );
   }
 }

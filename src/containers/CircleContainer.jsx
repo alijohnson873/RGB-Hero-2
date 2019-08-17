@@ -7,11 +7,9 @@ class CircleContainer extends Component {
   rgbArr = [];
   rgbArrCollection = [];
   randRGBGen = () => Math.ceil(Math.random() * 255);
-
   fillRgbArr = () => {
     return [this.randRGBGen(), this.randRGBGen(), this.randRGBGen()];
   };
-
   fillRgbMultiArr = () => {
     let newArr = [];
     for (let i = 0; i < 3; i++) {
@@ -20,16 +18,12 @@ class CircleContainer extends Component {
     return newArr;
   };
 
-  render() {
-    console.log(this.fillRgbMultiArr());
+  rgbMultiArr = this.fillRgbMultiArr();
 
+  render() {
     return (
       <section>
-        <Circle />
-        <Circle />
-        <Circle />
-        <Circle />
-        <Circle />
+        <Circle rgbValue={this.rgbMultiArr[0]} />
       </section>
     );
   }
