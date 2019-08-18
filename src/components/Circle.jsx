@@ -9,7 +9,7 @@ class Circle extends Component {
         onClick={() => console.log(this.props.rgbValue + this.props.index)}
         className={styles.circle}
         style={{
-          backgroundColor: this.props.makeRgbString(this.props.rgbValue)
+          backgroundColor: this.props.rgbValue
         }}
       />
     );
