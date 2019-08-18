@@ -5,6 +5,11 @@ import Circle from "../components/Circle";
 class CircleContainer extends Component {
   state = { allRgbValues: [], indexOfShownRgb: 1, testState: "" };
 
+  makeRandomRgbString = () => {
+    let rand255 = () => Math.ceil(Math.random() * 255);
+    return `rgb(${rand255()}, ${rand255()}, ${rand255()})`;
+  };
+
   makeSingleRgbArr = () => {
     let randRGBGen = () => Math.ceil(Math.random() * 255);
     return [randRGBGen(), randRGBGen(), randRGBGen()];
@@ -20,7 +25,7 @@ class CircleContainer extends Component {
   genRandIndexNumber = arr => Math.floor(Math.random() * arr.length);
 
   //makes rgb string from array //remember to add rgba value too
-  makeRgbString = arr => `rgb(${arr[0]}, ${arr[1]}, ${arr[2]}, 0.5)`;
+  makeRgbString = arr => `rgb(${arr[0]}, ${arr[1]}, ${arr[2]}, 0.5 )`;
 
   componentWillMount() {
     console.log("will mount");
@@ -35,11 +40,10 @@ class CircleContainer extends Component {
     });
   }
 
-  alertOnWin = () => {};
-
   render() {
-    console.log(this.state.allRgbValues);
-    console.log(this.state.indexOfShownRgb);
+    // console.log(this.state.allRgbValues);
+    // console.log(this.state.indexOfShownRgb);
+    console.log(this.makeRandomRgbString());
 
     return (
       <React.Fragment>
