@@ -6,7 +6,9 @@ class Circle extends Component {
   render() {
     return (
       <section
-        onClick={() => console.log(this.props.rgbValue + this.props.index)}
+        onClick={() => {
+          this.props.alertOnCorrectClick(this.props.id);
+        }}
         className={styles.circle}
         style={{
           backgroundColor: this.props.rgbValue
