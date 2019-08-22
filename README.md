@@ -1,4 +1,7 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# RGB Hero 2
+
+An RGB guessing game built using react. Click on the circle that matches the RGB value shown.
+
 
 ## Available Scripts
 
