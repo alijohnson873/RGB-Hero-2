@@ -1,6 +1,6 @@
 # RGB Hero 2
 
-An RGB guessing game built using react. Click on the circle that matches the RGB value shown.
+An RGB guessing game built using react. Click on the circle that matches the RGB value shown to win.
 
 https://rgbhero2.alicjohnson.co.uk/
 
