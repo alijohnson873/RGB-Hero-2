@@ -40,7 +40,6 @@ class CircleContainer extends Component {
       allRgbValues: this.makeMultiRgbStringArr(5)
     });
   }
-  //why do I need both above and below?
   componentDidMount() {
     this.setState({
       indexOfShownRgb: this.genRandIndexNumber(this.state.allRgbValues)
