@@ -1,4 +1,9 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# RGB Hero 2
+
+ RGB-hero 2 is a rgb-value colour matching game. Created in React to practise JavaScript fundemantals. CSS/ JavaScript animations to be incorporated soon. 
+
+https://rgbhero2.alicjohnson.co.uk/
+
 
 ## Available Scripts
 
