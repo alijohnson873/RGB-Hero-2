@@ -3,7 +3,7 @@ import styles from "./CircleContainer.module.scss";
 import Circle from "../components/Circle";
 
 class CircleContainer extends Component {
-  state = { allRgbValues: [], indexOfShownRgb: 1, score: 0, numberOfCircles: 5 };
+  state = { allRgbValues: [], indexOfShownRgb: 1, score: 0, numberOfCircles: 5, modalDisplayMessage: "" };
 
   makeRandomRgbString = () => {
     let rand255 = () => Math.ceil(Math.random() * 255);
@@ -19,17 +19,23 @@ class CircleContainer extends Component {
 
   genRandIndexNumber = arr => Math.floor(Math.random() * arr.length);
 
+  
+
   alertOnCorrectClick = id => {
     if (id === this.state.indexOfShownRgb) {
       // alert("Correct!");
       this.setState({
+        modalDisplayMessage: "Correct!",
         score: (this.state.score += 1),
-        allRgbValues: this.makeMultiRgbStringArr(this.state.numberOfCircles)
+        allRgbValues: this.makeMultiRgbStringArr(this.state.numberOfCircles),
+        indexOfShownRgb: this.genRandIndexNumber(this.state.allRgbValues),
       });
     } else {
       // alert("WRONG!");
       this.setState({
-        score: (this.state.score -= 1)
+        modalDisplayMessage: "WRONG!",
+        score: (this.state.score -= 1),
+        
         // allRgbValues: this.makeMultiRgbStringArr(5)
       });
     }
@@ -61,6 +67,7 @@ class CircleContainer extends Component {
               rgbValue={rgbSingle}
               id={index}
               alertOnCorrectClick={this.alertOnCorrectClick}
+              displayMessage = {this.state.modalDisplayMessage}
             />
           ))}
         </section>

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import styles from "./Circle.module.scss";
-import { NEG_ONE } from "long";
 
 class Circle extends Component {
   state = { isClicked: false };
@@ -10,7 +9,6 @@ handleCircleClick = () => {
     this.setState({
       isClicked: true
     });
-    console.log("circle is clicked")
   }
 
   modalClickToClose= () => {
@@ -28,11 +26,10 @@ handleCircleClick = () => {
       style={{
       backgroundColor: this.props.rgbValue
       }}
-      
       /> <div className={modalStyleOnClick}
       onClick={this.modalClickToClose} style={{
       backgroundColor: this.props.rgbValue,
-      }} > <h2>Wrong!</h2></div></React.Fragment>
+      }} > <h2>{this.props.displayMessage}</h2></div></React.Fragment>
     );
   }
 }
