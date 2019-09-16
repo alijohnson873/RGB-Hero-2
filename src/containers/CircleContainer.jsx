@@ -3,7 +3,7 @@ import styles from "./CircleContainer.module.scss";
 import Circle from "../components/Circle";
 
 class CircleContainer extends Component {
-  state = { allRgbValues: [], indexOfShownRgb: 1, score: 0 };
+  state = { allRgbValues: [], indexOfShownRgb: 1, score: 0, numberOfCircles: 5 };
 
   makeRandomRgbString = () => {
     let rand255 = () => Math.ceil(Math.random() * 255);
@@ -21,13 +21,13 @@ class CircleContainer extends Component {
 
   alertOnCorrectClick = id => {
     if (id === this.state.indexOfShownRgb) {
-      alert("Correct!");
+      // alert("Correct!");
       this.setState({
         score: (this.state.score += 1),
-        allRgbValues: this.makeMultiRgbStringArr(5)
+        allRgbValues: this.makeMultiRgbStringArr(this.state.numberOfCircles)
       });
     } else {
-      alert("WRONG!");
+      // alert("WRONG!");
       this.setState({
         score: (this.state.score -= 1)
         // allRgbValues: this.makeMultiRgbStringArr(5)
@@ -37,7 +37,7 @@ class CircleContainer extends Component {
 
   componentWillMount() {
     this.setState({
-      allRgbValues: this.makeMultiRgbStringArr(5)
+      allRgbValues: this.makeMultiRgbStringArr(this.state.numberOfCircles)
     });
   }
   componentDidMount() {
