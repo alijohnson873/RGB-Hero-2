@@ -19,7 +19,7 @@ class CircleContainer extends Component {
 
   genRandIndexNumber = arr => Math.floor(Math.random() * arr.length);
 
-  
+
 
   alertOnCorrectClick = id => {
     if (id === this.state.indexOfShownRgb) {
@@ -33,7 +33,7 @@ class CircleContainer extends Component {
     } else {
       // alert("WRONG!");
       this.setState({
-        modalDisplayMessage: "WRONG!",
+        modalDisplayMessage: "Wrong!",
         score: (this.state.score -= 1),
         
         // allRgbValues: this.makeMultiRgbStringArr(5)
