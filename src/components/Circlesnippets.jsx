@@ -17,6 +17,75 @@
 //What do I want////////////////
 
 //import React, { Component } from "react";
+
+import React, { Component } from "react";
+import styles from "./Circle.module.scss";
+import posed from "react-pose";
+
+
+const CirclePose = posed.div({
+  visible: { scale: 1, transition: { duration: 9000 } },
+  hidden: {  scale: 1, transition: { duration: 0 } }
+});
+
+class Circle extends Component {
+
+  state = { isClicked: false , isVisible: false}
+
+handleCircleClick = () => {
+    this.props.alertOnCorrectClick(this.props.id);
+    this.setState({
+      isClicked: true
+    });
+  }
+
+  modalClickToClose= () => {
+    this.setState({
+      isClicked: false
+    });
+  } 
+
+
+
+  componentDidMount() {
+   
+  this.setState({ isVisible: !this.state.isVisible })
+
+  }
+
+  render() {
+    const modalStyleOnClick = this.state.isClicked? styles.modal : styles.displayNone
+    return (
+      <React.Fragment>
+        
+        <CirclePose pose={this.state.isVisible ? "visible" : "hidden"}
+      onClick={this.handleCircleClick}
+      className={ styles.circle }
+      style={{
+      backgroundColor: this.props.rgbValue
+      }} />
+
+
+        {/* <section
+      onClick={this.handleCircleClick}
+      className={ styles.circle }
+      style={{
+      backgroundColor: this.props.rgbValue
+      }}
+      />  */}
+      
+      <div className={modalStyleOnClick}
+      onClick={this.modalClickToClose} style={{
+      backgroundColor: this.props.rgbValue,
+      }} > <h2>{this.props.displayMessage}</h2></div></React.Fragment>
+    );
+  }
+}
+
+export default Circle;
+
+
+
 import styles from "./CircleContainer.module.scss";
 import Circle from "../components/Circle";
 
