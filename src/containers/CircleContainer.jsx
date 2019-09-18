@@ -3,8 +3,7 @@ import styles from "./CircleContainer.module.scss";
 import Circle from "../components/Circle";
 
 class CircleContainer extends Component {
-  state = { allRgbValues: [], indexOfShownRgb: 1, score: 0, numberOfCircles: 5, modalDisplayMessage: "" };
-
+  state = { allRgbValues: [], indexOfShownRgb: 1, score: 0, numberOfCircles: 3, modalDisplayMessage: "" };
   makeRandomRgbString = () => {
     let rand255 = () => Math.ceil(Math.random() * 255);
     return `rgb(${rand255()}, ${rand255()}, ${rand255()})`;
@@ -16,17 +15,14 @@ class CircleContainer extends Component {
     }
     return multiRgbArr;
   };
-
   genRandIndexNumber = arr => Math.floor(Math.random() * arr.length);
-
-
-
   alertOnCorrectClick = id => {
     if (id === this.state.indexOfShownRgb) {
       // alert("Correct!");
       this.setState({
         modalDisplayMessage: "Correct!",
         score: (this.state.score += 1),
+        numberOfCircles: (this.state.numberOfCircles += 1),
         allRgbValues: this.makeMultiRgbStringArr(this.state.numberOfCircles),
         indexOfShownRgb: this.genRandIndexNumber(this.state.allRgbValues),
       });
@@ -40,7 +36,6 @@ class CircleContainer extends Component {
       });
     }
   };
-
   componentWillMount() {
     this.setState({
       allRgbValues: this.makeMultiRgbStringArr(this.state.numberOfCircles)
@@ -51,7 +46,6 @@ class CircleContainer extends Component {
       indexOfShownRgb: this.genRandIndexNumber(this.state.allRgbValues)
     });
   }
-
   render() {
     // console.log(this.state.allRgbValues);
     // console.log(this.state.indexOfShownRgb);
