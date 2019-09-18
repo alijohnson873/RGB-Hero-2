@@ -4,12 +4,12 @@ import posed from "react-pose";
 
 
 const CirclePose = posed.div({
-  visible: { scale: 1, x: +100, opacity: 1,  transition: {
-    type: 'spring',
-    stiffness: 20,
-    damping: 0
-  }, ease: 'linear' },
-  hidden: {  scale: 0.8, x: -100, opacity: 0.3, transition: { duration: 3000 }, ease: 'linear' }
+  // visible: { scale: 1, x: +100, opacity: 1,  transition: {
+  //   type: 'spring',
+  //   stiffness: 20,
+  //   damping: 0
+  // }, ease: 'linear' },
+  // hidden: {  scale: 0.8, x: -100, opacity: 0.3, transition: { duration: 3000 }, ease: 'linear' }
 });
 
 
@@ -31,7 +31,6 @@ handleCircleClick = () => {
       isClicked: false
     });
   } 
-
 
 
   componentDidMount() {
