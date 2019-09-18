@@ -18,7 +18,6 @@ class CircleContainer extends Component {
   genRandIndexNumber = arr => Math.floor(Math.random() * arr.length);
   alertOnCorrectClick = id => {
     if (id === this.state.indexOfShownRgb) {
-      // alert("Correct!");
       this.setState({
         modalDisplayMessage: "Correct!",
         score: (this.state.score += 1),
@@ -27,13 +26,10 @@ class CircleContainer extends Component {
         indexOfShownRgb: this.genRandIndexNumber(this.state.allRgbValues),
       });
     } else {
-      // alert("WRONG!");
       this.setState({
         modalDisplayMessage: "Wrong!",
         score: (this.state.score -= 1),
-        
-        // allRgbValues: this.makeMultiRgbStringArr(5)
-      });
+    });
     }
   };
   componentWillMount() {
@@ -47,9 +43,6 @@ class CircleContainer extends Component {
     });
   }
   render() {
-    // console.log(this.state.allRgbValues);
-    // console.log(this.state.indexOfShownRgb);
-    // console.log(this.makeRandomRgbString());
     return (
       <React.Fragment>
         <header>
